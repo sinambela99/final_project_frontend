@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from '../styles/Home.module.css'
 import Link from "next/link";
+import Navbar from '@/components/navbar'
 
 export default function Home() {
   return (
@@ -9,7 +10,7 @@ export default function Home() {
       <Head>
         <title> Home Page </title>
       </Head>
-
+      <Navbar />
       {Guest()}
     </div>
   )
@@ -18,6 +19,7 @@ export default function Home() {
 // Guest
 const Guest = () => {
   return (
+
     <main className="container mx-auto text-center py-20">
       <h3 className="text-4xl font-bold"> Guest Homepage </h3>
 
