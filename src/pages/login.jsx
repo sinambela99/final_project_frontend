@@ -59,7 +59,7 @@ export default function Login() {
 
         {/* Bottom */}
         <p className="text-center text-gray-400"> Don't have an account yet?
-          <span />
+          <span /> <span />
           <Link href={'./register'} className="text-blue-700">
             Register
           </Link>
