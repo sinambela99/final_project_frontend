@@ -1,7 +1,7 @@
 import '../app/globals.css'
 import styles from '../styles/LoginAndRegis.module.css'
 
-export default function LogAndRegisLayout({ children }) {
+export default function LogAndRegis({ children }) {
   return (
     <div className='flex h-screen bg-blue-400'>
       <div className='m-auto bg-slate-50 rounded-md w-3/5 h-3/4 grid lg:grid-cols-2'>

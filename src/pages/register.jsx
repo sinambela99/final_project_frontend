@@ -1,5 +1,5 @@
 import Head from "next/head";
-import LogAndRegisLayout from "../layout/logAndRegisLayout";
+import LogAndRegis from "../components/LogAndRegis";
 import Link from "next/link";
 import styles from '../styles/LoginAndRegis.module.css'
 import { HiAtSymbol, HiFingerPrint, HiOutlineUser } from "react-icons/hi";
@@ -9,7 +9,7 @@ export default function Register() {
   const [show, setShow] = useState({ password: false, cpassword: false })
 
   return (
-    <LogAndRegisLayout>
+    <LogAndRegis>
 
       <Head>
         <title> Register Form </title>
@@ -63,6 +63,6 @@ export default function Register() {
           <Link href={'./login'} className="text-blue-700"> Login </Link> </p>
       </section>
 
-    </LogAndRegisLayout>
+    </LogAndRegis>
   );
 }

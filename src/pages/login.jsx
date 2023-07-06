@@ -1,5 +1,5 @@
 import Head from "next/head";
-import LogAndRegisLayout from "../layout/logAndRegisLayout";
+import LogAndRegis from "../components/LogAndRegis";
 import Link from "next/link";
 import styles from '../styles/LoginAndRegis.module.css'
 import Image from "next/image";
@@ -11,7 +11,7 @@ export default function Login() {
   const [show, setShow] = useState(false)
 
   return (
-    <LogAndRegisLayout>
+    <LogAndRegis>
 
       <Head>
         <title> Login Form </title>
@@ -66,6 +66,6 @@ export default function Login() {
         </p>
       </section>
 
-    </LogAndRegisLayout>
+    </LogAndRegis>
   );
 }
