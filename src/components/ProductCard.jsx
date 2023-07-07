@@ -1,25 +1,42 @@
+import axios from "axios";
+import styles from "../app/styles/LoginAndRegis.module.css";
 import Link from 'next/link'
 import React from 'react'
 
+export async function getProducts() {
+  try {
+    const { data } = await axios.get("http://localhost:8081/api/product");
+    return data.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+}
 
-const ProductCard = () => {
+
+const ProductCard = async () => {
+  const products = await getProducts();
   return (
-    <Link href="/product" 
-          className='transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer'
-    >
-        <img className="w-full" src="/product-1.webp" alt="product image" />
-        <div className="p-4 text-black/[0.9]">
-            <h2 className='text-lg font-medium'>Product Name</h2>
-            <p className='mr-2 text-lg font-semibold'>$20.00</p>
-            <p className='text-base font-medium line-through'>
-                $30.00
-            </p>
+    <>
+      {products.map((product) => (
+        <Link
+          key={product.id}
+          href="/product"
+          className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer rounded-lg"
+        >
+          <img className="h-48 w-96 object-contain hover:object-scale-down" src={product.photo} alt={product.imageAlt} />
+          <div className="p-4 text-black/[0.9]">
+            <h2 className="text-lg font-medium">{product.name}</h2>
+            <p className="mr-2 text-lg font-semibold">{product.price - product.price * product.discount}</p>
+            <p className="text-base font-medium line-through">{product.price}</p>
             <p className="ml-auto text-base font-medium text-green-500">
-                30% off
+              {product.discount * 100}% OFF
             </p>
-        </div>
-    </Link>
-  )
+          </div>
+        </Link>
+      ))}
+    </>
+  );
 }
 
 export default ProductCard

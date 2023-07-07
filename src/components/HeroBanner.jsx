@@ -12,7 +12,7 @@ function HeroBanner() {
   }, []);
 
   return (
-    <div className="relative text-white text-[20px] w-full max-w[1360px] mx-auto">
+    <div className="relative text-white text-[20px] w-[80%] mx-auto my-14">
       <Carousel 
         autoPlay={true} 
         interval={2000} 
