@@ -1,5 +1,5 @@
 import axios from "axios";
-import styles from "../app/styles/LoginAndRegis.module.css";
+
 import Link from 'next/link'
 import React from 'react'
 
@@ -22,7 +22,7 @@ const ProductCard = async () => {
         <Link
           key={product.id}
           href="/product"
-          className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer rounded-lg"
+          className="transform overflow-hidden bg-neutral-100 duration-200 hover:scale-105 cursor-pointer rounded-lg"
         >
           <img className="h-48 w-96 object-contain hover:object-scale-down" src={product.photo} alt={product.imageAlt} />
           <div className="p-4 text-black/[0.9]">

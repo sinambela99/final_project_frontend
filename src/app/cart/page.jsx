@@ -1,8 +1,8 @@
 
 import React from 'react'
 import Link from 'next/link'
-import Wrapper from '@/components/Wrapper'
-import CartItem from '@/components/CartItem'
+import Wrapper from '@/components/Wrapper/Wrapper'
+import CartItem from '@/components/Cart_item/CartItem'
 
 const Cart = () => {
   return (

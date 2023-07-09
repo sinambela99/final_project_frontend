@@ -7,6 +7,7 @@ const data = [
   { id: 1, name: "Profile", url: "/" },
   { id: 2, name: "Add Product", url: "/" },
   { id: 3, name: "Categories", subMenu: true },
+  { id: 4, name: "Sign in", url: "/" }
 ];
 
 const subMenuData = [

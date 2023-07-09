@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { FaFacebookF, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
-import Wrapper from "./Wrapper";
+import Wrapper from "../Wrapper/Wrapper";
 
 const Footer = () => {
     return (

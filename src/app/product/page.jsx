@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
-import Wrapper from '@/components/Wrapper'
-import ProductDetailCarousel from '@/components/ProductDetailCarousel'
+import Wrapper from '@/components/Wrapper/Wrapper'
+import ProductDetailCarousel from '@/components/Product_detail/ProductDetailCarousel'
 
 const ProductDetails = () => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Wrapper from '@/components/Wrapper'
-import ProductCard from '@/components/ProductCard'
+import Wrapper from '@/components/Wrapper/Wrapper'
+import ProductCard from '@/components/Product/ProductCard'
 
 const Categories = () => {
   return (
