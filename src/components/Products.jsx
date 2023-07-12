@@ -15,7 +15,7 @@ const Products = async () => {
   const products = await getProducts();
 
   return (
-    <section className="bg-white py-12 text-gray-700 sm:py-16 lg:py-20">
+    <section className="bg-white py-12 text-gray-700 sm:py-16 lg:py-20" id='products-feed'>
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-md text-center mt-8">
           <h2 className="font-serif text-2xl font-bold sm:text-3xl">

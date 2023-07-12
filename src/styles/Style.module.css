@@ -1,7 +1,27 @@
 /* .container {
   padding: 0 2rem;
 } */
+
+/* Profile */
 .border {
   @apply flex justify-center items-center border-8 border-gray-50 h-3/4 w-[30%] rounded-lg bg-red-500 px-10 min-w-max;
   /* shrink-0 */
+}
+
+/* Banner */
+.containerBanner {
+  @apply md:flex-row md:justify-between md:items-center md:gap-1;
+}
+.mediaHeader2 {
+  @apply lg:text-6xl sm:text-5xl;
+}
+.mediaHeader1 {
+  @apply lg:text-7xl sm:text-6xl sm:mt-4;
+}
+.mediaParagraph {
+  @apply lg:mt-10 lg:mb-14 sm:mt-8 sm:mb-10 lg:text-base;
+}
+.mediaButton {
+  @apply lg:px-10 lg:py-2 xl:text-xl lg:text-lg;
+  @apply cursor-pointer rounded-sm text-sm text-white bg-gradient-to-b from-blue-500 to-blue-800 border border-blue-500;
 }
