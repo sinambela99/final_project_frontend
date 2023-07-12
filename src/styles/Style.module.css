@@ -1,0 +1,7 @@
+/* .container {
+  padding: 0 2rem;
+} */
+.border {
+  @apply flex justify-center items-center border-8 border-gray-50 h-3/4 w-[30%] rounded-lg bg-red-500 px-10 min-w-max;
+  /* shrink-0 */
+}

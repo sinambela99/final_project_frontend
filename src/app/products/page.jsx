@@ -1,6 +1,7 @@
 import axios from "axios";
 import styles from "../../styles/LoginAndRegis.module.css";
 import Link from "next/link";
+// import { getProducts } from "@/api/products";
 
 export async function getProducts() {
   try {

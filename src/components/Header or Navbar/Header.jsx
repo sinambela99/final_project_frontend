@@ -11,10 +11,12 @@ export default function Header() {
     {
       label: 'Profile',
       icon: HiOutlineUserCircle,
+      url: '/register'
     },
     {
       label: 'Orders',
       icon: HiOutlineShoppingCart,
+      url: '/userProfile'
     },
     // {
     //   label: 'Contact',
@@ -23,6 +25,7 @@ export default function Header() {
     {
       label: 'Logout',
       icon: HiOutlineLogout,
+      url: '/login'
     }
   ]
 
@@ -30,13 +33,10 @@ export default function Header() {
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography as='li' variant='small' color='black' className='font-normal'>
-        <Link href={'/#'} className="flex items-center"> Products </Link>
-        {/* <a href="/login" className="flex items-center">
-          Products
-        </a> */}
+        <Link href={'/login'} className="flex items-center"> Products </Link>
       </Typography>
       <Typography as='li' variant='small' color='black' className='font-normal'>
-        <Link href={'/#'} className="flex items-center"> Orders </Link>
+        <Link href={'/register'} className="flex items-center"> Orders </Link>
       </Typography>
       <Typography as='li' variant='small' color='black' className='font-normal'>
         <Link href={'/#'} className="flex items-center"> About </Link>
@@ -78,7 +78,7 @@ export default function Header() {
           </Button>
         </MenuHandler>
         <MenuList className="p-1">
-          {profileMenuItem.map(({ label, icon }, key) => {
+          {profileMenuItem.map(({ label, icon, url }, key) => {
             const isLastItem = key === profileMenuItem.length - 1;
             return (
               <MenuItem
@@ -99,7 +99,12 @@ export default function Header() {
                   className="font-normal"
                   color={isLastItem ? "red" : "inherit"}
                 >
-                  {label}
+                  <Link href={url} className="flex items-center" key={url}>
+                    {label}
+                  </Link>
+                  <Typography as='li' variant='small' color='black' className='font-normal'>
+                    <Link href={'/#'} className="flex items-center"> Products </Link>
+                  </Typography>
                 </Typography>
               </MenuItem>
             );
