@@ -4,6 +4,9 @@ import axios from "axios";
 import { useParams } from "next/navigation";
 import Header from "./Header or Navbar/Header";
 import Image from "next/image";
+import { HiShoppingCart, HiLightningBolt } from 'react-icons/hi'
+import { Button } from "@material-tailwind/react";
+import styles from '../styles/Style.module.css'
 
 export async function getProductDetail(id) {
   try {
@@ -39,9 +42,11 @@ const ProductDetail = async () => {
                 {data.Product.name}
               </h1>
               <div className="flex mb-4">
-                <span className="flex items-center text-blue-gray-500 capitalize mb-4 font-medium" >
-                  {data.Category.name}
-                </span>
+                <div className="flex pl-3 py-2">
+                  <h4 className="text-gray-500 capitalize font-medium">
+                    {data.Category.name}
+                  </h4>
+                </div>
                 <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200">
                   <h4 className="text-gray-500">
                     Stok Total:{" "}
@@ -51,35 +56,30 @@ const ProductDetail = async () => {
                   </h4>
                 </span>
               </div>
-              <p className="leading-relaxed">{data.Product.description}</p>
-              <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
-                <h1>Atur Jumlah</h1>
-                <div>
-                  <button>-</button>
-                  <input type="number" />
-                  <button>+</button>
-                </div>
+              <p className="text-gray-500 text-justify text-sm lg:text-base my-6">
+                {data.Product.description}
+              </p>
+              {/* <p className="text-gray-500 leading-relaxed">{data.Product.description}</p> */}
+              <p className="text-2xl font-semibold text-gray-700">
+                {new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(data.Product.price)}
+              </p>
+              <div className="mt-10 flex flex-col sm:gap-4 gap-2">
+                <Button
+                  className={`${styles.mediaButton}`}
+                // onClick={addItemToCart}
+                >
+                  <HiShoppingCart className="w-4" />
+                  <span className="ml-2">Add to Cart</span>
+                </Button>
+                <Button
+                  className={`${styles.mediaButtonGreen}`}
+                // onClick={buyNow}
+                >
+                  <HiLightningBolt className="w-4" />
+                  <span className="ml-2">Buy Now</span>
+                </Button>
               </div>
-              <div className="flex">
-                <span className="title-font font-medium text-2xl text-gray-900">
-                  Rp {data.Product.price}
-                </span>
-                <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
-                  Add to Cart
-                </button>
-                <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
-                  <svg
-                    fill="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    className="w-5 h-5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
-                  </svg>
-                </button>
-              </div>
+
             </div>
           </div>
         </div>

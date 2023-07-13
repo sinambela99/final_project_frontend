@@ -22,8 +22,12 @@
   @apply lg:mt-10 lg:mb-14 sm:mt-8 sm:mb-10 lg:text-base;
 }
 .mediaButton {
-  @apply lg:px-10 lg:py-2 xl:text-xl lg:text-lg;
-  @apply cursor-pointer rounded-sm text-sm text-white bg-gradient-to-b from-blue-500 to-blue-800 border border-blue-500;
+  @apply px-10 py-2 flex items-center justify-center;
+  @apply cursor-pointer rounded text-sm text-white bg-gradient-to-b from-blue-500 to-blue-800 border-blue-500;
+}
+.mediaButtonGreen {
+  @apply px-10 py-2 flex items-center justify-center;
+  @apply cursor-pointer rounded text-center p-2 text-sm text-white bg-gradient-to-b from-green-500 to-green-800 border-green-500;
 }
 
 /* Product */
