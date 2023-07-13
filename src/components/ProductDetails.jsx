@@ -2,6 +2,8 @@
 
 import axios from "axios";
 import { useParams } from "next/navigation";
+import Header from "./Header or Navbar/Header";
+import Image from "next/image";
 
 export async function getProductDetail(id) {
   try {
@@ -20,76 +22,25 @@ const ProductDetail = async () => {
 
   return (
     <>
-      <section className="text-gray-700 body-font overflow-hidden bg-white">
-        <div className="container px-5 py-24 mx-auto">
-          <div className="lg:w-4/5 mx-auto flex flex-wrap">
-            <img
-              alt="ecommerce"
-              className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200"
+      <Header />
+      <section className="heightFix px-6 lg:py-32 md:py-28 py-5 pb-10 bg-white">
+        <div className="max-w-screen-xl py-10 flex items-center mx-auto">
+          <div className="flex md:flex-row flex-col md:justify-between w-full md:gap-4 gap-8">
+            <Image
+              unoptimized
               src={data.Product.photo}
+              alt=""
+              width={400}
+              height={400}
+              className="object-contain"
             />
-            <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-              <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
+            <div className="flex-grow xl:max-w-2xl lg:max-w-xl md:max-w-md">
+              <h1 className="text-gray-900 font-bold xl:text-4xl lg:text-3xl text-2xl mb-2 capitalize">
                 {data.Product.name}
               </h1>
               <div className="flex mb-4">
-                <span className="flex items-center">
-                  <svg
-                    fill="currentColor"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    className="w-4 h-4 text-red-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                  <svg
-                    fill="currentColor"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    className="w-4 h-4 text-red-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                  <svg
-                    fill="currentColor"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    className="w-4 h-4 text-red-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                  <svg
-                    fill="currentColor"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    className="w-4 h-4 text-red-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    className="w-4 h-4 text-red-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                  <span className="text-gray-600 ml-3">4 Reviews</span>
+                <span className="flex items-center text-blue-gray-500 capitalize mb-4 font-medium" >
+                  {data.Category.name}
                 </span>
                 <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200">
                   <h4 className="text-gray-500">

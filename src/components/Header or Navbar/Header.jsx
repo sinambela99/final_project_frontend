@@ -11,12 +11,12 @@ export default function Header() {
     {
       label: 'Profile',
       icon: HiOutlineUserCircle,
-      url: '/register'
+      url: '/profile'
     },
     {
       label: 'Orders',
       icon: HiOutlineShoppingCart,
-      url: '/userProfile'
+      url: '/'
     },
     // {
     //   label: 'Contact',
@@ -33,16 +33,16 @@ export default function Header() {
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography as='li' variant='small' color='black' className='font-normal'>
-        <Link href={'/login'} className="flex items-center"> Products </Link>
+        <Link href={'/products'} className="flex items-center"> Products </Link>
       </Typography>
       <Typography as='li' variant='small' color='black' className='font-normal'>
-        <Link href={'/register'} className="flex items-center"> Orders </Link>
+        <Link href={'/'} className="flex items-center"> Orders </Link>
       </Typography>
       <Typography as='li' variant='small' color='black' className='font-normal'>
         <Link href={'/#'} className="flex items-center"> About </Link>
       </Typography>
       <Typography as='li' variant='small' color='black' className='font-normal'>
-        <Link href={'/#'} className="flex items-center"> Login </Link>
+        <Link href={'/login'} className="flex items-center"> Login </Link>
       </Typography>
       <ProfileMenu />
       <IconButton variant="text">
@@ -102,9 +102,6 @@ export default function Header() {
                   <Link href={url} className="flex items-center" key={url}>
                     {label}
                   </Link>
-                  <Typography as='li' variant='small' color='black' className='font-normal'>
-                    <Link href={'/#'} className="flex items-center"> Products </Link>
-                  </Typography>
                 </Typography>
               </MenuItem>
             );

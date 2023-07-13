@@ -1,4 +1,5 @@
 'use client'
+import '../../app/globals.css'
 import styles from '../../styles/Style.module.css'
 import { Fade } from "react-awesome-reveal"
 import Image from "next/image"

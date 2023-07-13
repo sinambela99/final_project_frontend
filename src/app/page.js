@@ -3,7 +3,7 @@ import Head from "next/head";
 // import styles from '../styles/Home.module.css'
 import Header from "@/components/Header or Navbar/Header";
 import Banner from "@/components/Banner/Banner";
-import Products from "@/components/Products";
+import Products from "@/pages/products";
 import RootLayout from "./layout";
 import Payment from "@/components/payment/payment";
 
