@@ -25,3 +25,8 @@
   @apply lg:px-10 lg:py-2 xl:text-xl lg:text-lg;
   @apply cursor-pointer rounded-sm text-sm text-white bg-gradient-to-b from-blue-500 to-blue-800 border border-blue-500;
 }
+
+/* Product */
+.link {
+  @apply text-black cursor-pointer hover:text-blue-500 active:text-blue-500;
+}
