@@ -1,9 +1,9 @@
-import CategoryDetail from "@/components/categories"
+// import CategoryDetail from "@/components/categories"
 
-export default function CategoryDetPage() {
-  return (
-    <div>
-      <CategoryDetail />
-    </div>
-  )
-}
+// export default function CategoryDetPage() {
+//   return (
+//     <div>
+//       <CategoryDetail />
+//     </div>
+//   )
+// }

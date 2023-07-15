@@ -10,10 +10,10 @@ import styles from '../styles/Style.module.css'
 
 export async function getProductDetail(id) {
   try {
-    const data = await axios.get(
+    const {data} = await axios.get(
       `http://localhost:8081/api/product-detail/${id}`
     );
-    return data.data.data;
+    return data.data;
   } catch (err) {
     throw new Error("Failed to fetch data");
   }
