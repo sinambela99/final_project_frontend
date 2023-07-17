@@ -13,3 +13,7 @@
 - tailwind=yes
 - src=yes
 - router=yes
+
+# Notes :
+
+- routing sesuai dengan app

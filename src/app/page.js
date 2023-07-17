@@ -3,23 +3,16 @@ import Head from "next/head";
 // import styles from '../styles/Home.module.css'
 import Header from "@/components/Header or Navbar/Header";
 import Banner from "@/components/Banner/Banner";
-import Products from "@/pages/products";
+
 import RootLayout from "./layout";
 import Payment from "@/components/payment/payment";
+import Products from "./products/page";
 
 export default function Home() {
   return (
-    <RootLayout>
-      <div>
-        <Head>
-          <title> Home Page </title>
-        </Head>
-
-        <Header />
-        <Banner />
-        <Products />
-        {/* <Payment /> */}
-      </div>
-    </RootLayout>
-  )
+    <>
+      <Banner />
+      <Products />
+    </>
+  );
 }
