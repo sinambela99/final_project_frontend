@@ -51,13 +51,6 @@ export default function Products() {
                     <del className="text-xs text-gray-400">{new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(product.price)}</del>
                   </div>
                 </div>
-                <button
-                  className={`h-20 flex items-center justify-center cursor-pointer rounded-sm text-sm text-white bg-gradient-to-b from-blue-500 to-blue-800 border border-blue-500`}
-                  // onClick={addItemToCart}
-                >
-                  <HiShoppingCart className="w-4" />
-                  <span className="ml-2">Add to Cart</span>
-                </button>
               </article>
             </Fade>
           ))}
