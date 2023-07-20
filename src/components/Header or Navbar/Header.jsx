@@ -3,8 +3,10 @@ import React from "react";
 import { Button, IconButton, Input, Navbar, Typography, Menu, MenuHandler, Avatar, MenuList, MenuItem } from "@material-tailwind/react";
 import { HiSearch, HiShoppingCart, HiOutlineUserCircle, HiOutlineShoppingCart, HiOutlineLogout, HiChevronDown } from "react-icons/hi";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 export default function Header() {
+  const { cartTotalQuantity } = useSelector((state) => state.cart)
 
   // Profile Menu Component
   const profileMenuItem = [
@@ -45,9 +47,15 @@ export default function Header() {
         <Link href={'/login'} className="flex items-center"> Login </Link>
       </Typography>
       <ProfileMenu />
-      <IconButton variant="text">
-        <HiShoppingCart size={25} color="black" />
-      </IconButton>
+      <Link href={'/cart'}>
+        <IconButton variant="text">
+          <HiShoppingCart size={25} color="black" />
+          <div className="absolute -top-2 -right-1 rounded-full text-white bg-blue-500 p-1 flex items-center justify-center text-xs font-extrabold">
+            {cartTotalQuantity}
+          </div>
+        </IconButton>
+      </Link>
+
     </ul>
   )
 
@@ -115,7 +123,9 @@ export default function Header() {
     <>
       <Navbar className="fixed top z-10 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4">
         <div className="flex items-center justify-between text-blue-gray-900">
-          <Typography as='li' variant='h4' color='black' className="font-bold"> Final Project Team 1 </Typography>
+          <Typography as='li' variant='h4' color='black' className="font-bold">
+            <Link href={'/'} className="flex items-center"> Final Project Team 1 </Link>
+          </Typography>
           <div className="relative flex w-full gap-2 md:w-max">
             <Input
               // type="search"

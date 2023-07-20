@@ -29,6 +29,9 @@
   @apply px-10 py-2 flex items-center justify-center;
   @apply cursor-pointer rounded text-center p-2 text-sm text-white bg-gradient-to-b from-green-500 to-green-800 border-green-500;
 }
+.mediaButtonRed {
+  @apply cursor-pointer rounded text-center p-2 text-sm text-white bg-gradient-to-b from-red-500 to-red-800;
+}
 .button {
   @apply cursor-pointer rounded text-center p-2 text-sm text-white bg-gradient-to-b from-blue-500 to-blue-800;
 }
