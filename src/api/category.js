@@ -10,3 +10,12 @@ export async function categoryById(params) {
     return [];
   }
 }
+
+export async function getCategory() {
+  try {
+    const { data } = await axios.get("http://localhost:8081/api/category");
+    return data.data;
+  } catch (error) {
+    throw new Error("Failed to fetch data");
+  }
+}

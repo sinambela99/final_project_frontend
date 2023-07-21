@@ -3,9 +3,10 @@ import React from "react";
 import { Button, IconButton, Input, Navbar, Typography, Menu, MenuHandler, Avatar, MenuList, MenuItem } from "@material-tailwind/react";
 import { HiSearch, HiShoppingCart, HiOutlineUserCircle, HiOutlineShoppingCart, HiOutlineLogout, HiChevronDown } from "react-icons/hi";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useSelector } from "react-redux";
 
-export default function Header() {
+const Header = () => {
   const { cartTotalQuantity } = useSelector((state) => state.cart)
 
   // Profile Menu Component
@@ -149,3 +150,5 @@ export default function Header() {
     </>
   )
 }
+
+export default dynamic(() => Promise.resolve(Header), { ssr: false })

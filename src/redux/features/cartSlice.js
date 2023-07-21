@@ -12,7 +12,6 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         // Actions
-        //Actions
         hydrate(state, action) {
             return action.payload;
         },
