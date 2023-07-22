@@ -3,12 +3,11 @@ import React from "react";
 import { getProducts } from "@/api/products";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { Fade } from "react-awesome-reveal";
+import CategoryAdj from "@/components/Category/Category";
 import styles from "../../styles/Style.module.css";
-import { HiShoppingCart } from "react-icons/hi";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -19,7 +18,7 @@ export default function Products() {
       if (res) {
         setProducts(res);
       }
-    });
+    })
   }, []);
 
   return (
@@ -28,6 +27,7 @@ export default function Products() {
         <div className="mx-auto max-w-md text-center mt-8 py-10">
           <h2 className="font-serif text-2xl font-bold sm:text-3xl">Shop All Products</h2>
         </div>
+        <CategoryAdj />
 
         <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-4 lg:mt-16">
           {products.map((product) => (
