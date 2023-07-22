@@ -1,21 +1,21 @@
-"use client"
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function AddProduct() {
   const [product, setProduct] = useState({
-    name: '',
-    description: '',
-    price: '',
-    discount: '',
+    name: "",
+    description: "",
+    price: "",
+    discount: "",
     photo: null,
-    stock: '',
-    CategoryId: '',
+    stock: "",
+    CategoryId: "",
   });
 
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   useEffect(() => {
     fetchCategories();
@@ -49,16 +49,13 @@ export default function AddProduct() {
 
     try {
       const formData = new FormData();
-      formData.append('file', product.photo);
-      formData.append('upload_preset', 'my-uploads');
+      formData.append("file", product.photo);
+      formData.append("upload_preset", "my-uploads");
 
-      const response = await fetch(
-        'https://api.cloudinary.com/v1_1/dv9rlshr4/image/upload',
-        {
-          method: 'POST',
-          body: formData,
-        }
-      );
+      const response = await fetch("https://api.cloudinary.com/v1_1/dv9rlshr4/image/upload", {
+        method: "POST",
+        body: formData,
+      });
 
       const data = await response.json();
       const uploadedFileURL = data.secure_url;
@@ -73,11 +70,15 @@ export default function AddProduct() {
         CategoryId: selectedCategory,
       };
 
-      const serverResponse = await axios.post('http://localhost:8081/api/product', productData);
+      const serverResponse = await axios.post("http://localhost:8081/api/product", productData, {
+        headers: {
+          access_token: localStorage.getItem("access_token"),
+        },
+      });
 
-      console.log('Product added successfully:', serverResponse.data);
+      console.log("Product added successfully:", serverResponse.data);
     } catch (error) {
-      console.error('Error adding product:', error);
+      console.error("Error adding product:", error);
     }
   };
 
@@ -85,103 +86,49 @@ export default function AddProduct() {
     <div className="w-full max-w-[1000px] mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Add New Product</h1>
       <form onSubmit={handleSubmit}>
-      <div className="mb-4">
+        <div className="mb-4">
           <label htmlFor="productName" className="block font-medium">
             Product Name:
           </label>
-          <input
-            type="text"
-            id="productName"
-            name="name"
-            value={product.name}
-            onChange={handleChange}
-            className="border border-gray-300 p-2 rounded-md w-full"
-            required
-          />
+          <input type="text" id="productName" name="name" value={product.name} onChange={handleChange} className="border border-gray-300 p-2 rounded-md w-full" required />
         </div>
         <div className="mb-4">
           <label htmlFor="productDescription" className="block font-medium">
             Product Description:
           </label>
-          <textarea
-            id="productDescription"
-            name="description"
-            value={product.description}
-            onChange={handleChange}
-            className="border border-gray-300 p-2 rounded-md w-full"
-            required
-          />
+          <textarea id="productDescription" name="description" value={product.description} onChange={handleChange} className="border border-gray-300 p-2 rounded-md w-full" required />
         </div>
         <div className="mb-4">
           <label htmlFor="productPrice" className="block font-medium">
             Price:
           </label>
-          <input
-            type="number"
-            id="productPrice"
-            name="price"
-            value={product.price}
-            onChange={handleChange}
-            className="border border-gray-300 p-2 rounded-md w-full"
-            required
-          />
+          <input type="number" id="productPrice" name="price" value={product.price} onChange={handleChange} className="border border-gray-300 p-2 rounded-md w-full" required />
         </div>
         <div className="mb-4">
           <label htmlFor="productDiscount" className="block font-medium">
             Discount:
           </label>
-          <input
-            type="number"
-            id="productDiscount"
-            name="discount"
-            value={product.discount}
-            onChange={handleChange}
-            className="border border-gray-300 p-2 rounded-md w-full"
-            required
-          />
+          <input type="number" id="productDiscount" name="discount" value={product.discount} onChange={handleChange} className="border border-gray-300 p-2 rounded-md w-full" required />
         </div>
         <div className="mb-4">
           <label htmlFor="productImage" className="block font-medium">
             Product Image:
           </label>
-          <input
-            type="file"
-            id="productImage"
-            name="photo"
-            onChange={handleFileChange}
-            className="border border-gray-300 p-2 rounded-md w-full"
-            accept="image/*"
-            required
-          />
+          <input type="file" id="productImage" name="photo" onChange={handleFileChange} className="border border-gray-300 p-2 rounded-md w-full" accept="image/*" required />
         </div>
 
         <div className="mb-4">
           <label htmlFor="productStock" className="block font-medium">
             Stock:
           </label>
-          <input
-            type="number"
-            id="productStock"
-            name="stock"
-            value={product.stock}
-            onChange={handleChange}
-            className="border border-gray-300 p-2 rounded-md w-full"
-            required
-          />
+          <input type="number" id="productStock" name="stock" value={product.stock} onChange={handleChange} className="border border-gray-300 p-2 rounded-md w-full" required />
         </div>
 
         <div className="mb-4">
           <label htmlFor="productCategoryId" className="block font-medium">
             Category:
           </label>
-          <select
-            id="productCategoryId"
-            name="categoryId"
-            value={selectedCategory}
-            onChange={handleCategoryChange}
-            className="border border-gray-300 p-2 rounded-md w-full"
-            required
-          >
+          <select id="productCategoryId" name="categoryId" value={selectedCategory} onChange={handleCategoryChange} className="border border-gray-300 p-2 rounded-md w-full" required>
             <option value="">Select Category</option>
             {categories.map((category) => (
               <option key={category.id} value={category.id}>

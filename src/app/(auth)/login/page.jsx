@@ -47,7 +47,7 @@ export default function Login() {
   }
 
   useEffect(() => {
-    localStorage.setItem("access_token", JSON.stringify(items.access_token));
+    localStorage.setItem("access_token", items.access_token);
     console.log(items.access_token);
   }, [items]);
 
