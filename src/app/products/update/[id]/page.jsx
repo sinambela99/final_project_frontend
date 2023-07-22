@@ -1,21 +1,36 @@
 "use client";
 
-import { useState } from 'react';
-import axios from 'axios';
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams, useRouter } from "next/navigation";
 
 export default function UpdateProduct() {
-  const [params, setProductId] = useState('');
+  const [params, setProductId] = useState("");
   const [product, setProduct] = useState({
-    name: '',
-    description: '',
-    price: '',
-    discount: '',
+    name: "",
+    description: "",
+    price: "",
+    discount: "",
     photo: null,
   });
+  const { id } = useParams();
+  const router = useRouter()
+
+  useEffect(() => {
+    const fetch = async () => {
+      const { data } = await axios.get(
+        `http://localhost:8081/api/product-detail/${id}`
+      );
+      setProduct(data.data);
+    };
+    fetch();
+  }, []);
+
+  console.log(product);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === 'id') {
+    if (name === "id") {
       setProductId(value);
     } else {
       setProduct((prevProduct) => ({ ...prevProduct, [name]: value }));
@@ -32,17 +47,20 @@ export default function UpdateProduct() {
 
     try {
       const formData = new FormData();
-      formData.append('file', product.photo);
-      formData.append('upload_preset', 'my-uploads');
+      formData.append("file", product.photo);
+      formData.append("upload_preset", "my-uploads");
 
-      const response = await fetch('https://api.cloudinary.com/v1_1/dv9rlshr4/image/upload', {
-        method: 'PUT',
-        body: formData,
-      });
+      const response = await fetch(
+        "https://api.cloudinary.com/v1_1/dv9rlshr4/image/upload",
+        {
+          method: "PUT",
+          body: formData,
+        }
+      );
 
       const data = await response.json();
       const uploadedFileURL = data.secure_url;
-      console.log('File uploaded successfully:', uploadedFileURL);
+      console.log("File uploaded successfully:", uploadedFileURL);
 
       const productData = {
         name: product.name,
@@ -52,11 +70,14 @@ export default function UpdateProduct() {
         photo: uploadedFileURL,
       };
 
-      const serverResponse = await axios.put(`http://localhost:8081/api/product/${params}`, productData);
+      const serverResponse = await axios.put(
+        `http://localhost:8081/api/product/${params}`,
+        productData
+      );
 
-      console.log('Product updated successfully:', serverResponse.data);
+      console.log("Product updated successfully:", serverResponse.data);
     } catch (error) {
-      console.error('Error updating product:', error);
+      console.error("Error updating product:", error);
     }
   };
 
@@ -72,7 +93,7 @@ export default function UpdateProduct() {
             type="text"
             id="productId"
             name="id"
-            value={params}
+            value={id}
             onChange={handleChange}
             className="border border-gray-300 p-2 rounded-md w-full"
             required
@@ -86,7 +107,7 @@ export default function UpdateProduct() {
             type="text"
             id="productName"
             name="name"
-            value={product.name}
+            value={product.Product?.name}
             onChange={handleChange}
             className="border border-gray-300 p-2 rounded-md w-full"
             required
@@ -99,7 +120,7 @@ export default function UpdateProduct() {
           <textarea
             id="productDescription"
             name="description"
-            value={product.description}
+            value={product.Product?.description}
             onChange={handleChange}
             className="border border-gray-300 p-2 rounded-md w-full"
             required
@@ -113,7 +134,7 @@ export default function UpdateProduct() {
             type="number"
             id="productPrice"
             name="price"
-            value={product.price}
+            value={product.Product?.price}
             onChange={handleChange}
             className="border border-gray-300 p-2 rounded-md w-full"
             required
@@ -127,7 +148,7 @@ export default function UpdateProduct() {
             type="number"
             id="productDiscount"
             name="discount"
-            value={product.discount}
+            value={product.Product?.discount}
             onChange={handleChange}
             className="border border-gray-300 p-2 rounded-md w-full"
             required
@@ -147,8 +168,17 @@ export default function UpdateProduct() {
             required
           />
         </div>
-        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md">
+        <button
+          type="submit"
+          className="mr-4 bg-blue-500 text-white px-4 py-2 rounded-md"
+        >
           Update Product
+        </button>
+        <button
+        onClick={() => router.push(`/products/delete/${id}`)}
+          className="bg-red-500 text-white px-4 py-2 rounded-md"
+        >
+          Delete Product
         </button>
       </form>
     </div>

@@ -3,9 +3,11 @@
 
 import { useState } from 'react';
 import axios from 'axios';
+import { useParams } from 'next/navigation';
 
 export default function DeleteProduct() {
   const [params, setProductId] = useState('');
+  const {id} = useParams()
 
   const handleChange = (e) => {
     setProductId(e.target.value);
@@ -14,7 +16,7 @@ export default function DeleteProduct() {
   const handleDelete = async () => {
     try {
       // Send a DELETE request to the backend server to delete the product by its ID
-      const serverResponse = await axios.delete(`http://localhost:8081/api/product/${params}`);
+      const serverResponse = await axios.delete(`http://localhost:8081/api/product/${id}`);
 
       console.log('Product deleted successfully:', serverResponse.data);
       // You can add additional logic to handle successful deletion, show a success message, or refresh the product list, etc.
@@ -34,7 +36,7 @@ export default function DeleteProduct() {
         <input
           type="text"
           id="productId"
-          value={params}
+          value={id}
           onChange={handleChange}
           className="border border-gray-300 p-2 rounded-md w-full"
           required
