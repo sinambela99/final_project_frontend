@@ -9,9 +9,12 @@ import RootLayout from "./layout";
 import Payment from "@/components/payment/payment";
 import Products from "./products/page";
 
+import { ToastContainer } from "react-toastify";
+
 export default function Home() {
   return (
     <>
+      <ToastContainer />
       <Banner />
       <CategoryPage />
       <Products />
