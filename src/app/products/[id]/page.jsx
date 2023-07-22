@@ -12,6 +12,8 @@ import { useRouter } from "next/navigation";
 import { addToCart, getTotal } from "@/redux/features/cartSlice";
 import { ToastContainer } from "react-toastify";
 import Head from "next/head";
+import axios from "axios";
+import { getCart } from "@/api/cart";
 
 const ProductDetail = () => {
   const [datas, setDatas] = useState([]);
@@ -19,6 +21,7 @@ const ProductDetail = () => {
   const dispatch = useDispatch()
   const router = useRouter()
   const cart = useSelector((state) => state.cart)
+  let qty = 1
 
 
   //   const data = await getProductDetail(id);
@@ -36,6 +39,26 @@ const ProductDetail = () => {
   }, [cart, dispatch]);
 
   const handleAddToCart = (product) => {
+    // let isExisting = false
+    // const result = await getCart()
+    // if (result.data?.length === 0) {
+    //   const cart = { UserId: a, ProductId: b, quantity: qty }
+    //   axios.post('http://localhost:8081/api/cart', cart)
+    // } else {
+    //   result.data?.map((cartItem) => {
+    //     if (a === cartItem.UserId) {
+    //       cartItem.quantity += 1
+    //       const cart = { UserId: a, ProductId: b, quantity: qty }
+
+    //       axios.put(`http://localhost:8081/api/cart/${cartItem.id}`, cart)
+    //     }
+    //   })
+    //   if (isExisting == false) {
+    //     const cart = { UserId: a, ProductId: b, quantity: qty }
+    //     axios.post('http://localhost:8081/api/cart', cart)
+    //   }
+    // }
+
     dispatch(addToCart(product))
   }
 

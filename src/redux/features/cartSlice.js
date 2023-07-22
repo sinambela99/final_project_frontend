@@ -27,12 +27,12 @@ const cartSlice = createSlice({
             } else {
                 const tempProduct = { ...action.payload, cartQuantity: 1 }
                 state.cartItems.push(tempProduct)
-                toast.success(`${action.payload.Product.name} added to cart`, {
+                toast.success(`${action.payload.Product?.name} added to cart`, {
                     position: 'bottom-left'
                 })
             }
 
-            localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
+            // localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
         },
         //Update the quantity of item in cart
         updateCart(state, action) {
