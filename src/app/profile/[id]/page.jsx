@@ -10,10 +10,16 @@ export default function ProfilePage() {
   const router = useRouter();
 
   useEffect(() => {
-    getUser(id).then((res) => setData(res));
+    getUser(id).then((res) => {
+      if (!res) {
+        router.push('/404')
+      } else {
+        setData(res);
+      }
+    });
   }, []);
 
-  if (!data) return <h1>Loading...</h1>;
+  console.log(data);
 
   return (
     <div>
