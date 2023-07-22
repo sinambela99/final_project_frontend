@@ -2,11 +2,14 @@ import axios from "axios";
 
 export async function getUser(id) {
   try {
-    const { data } = await axios.get(`http://localhost:8081/api/user/${id}`);
+    const { data } = await axios.get(`http://localhost:8081/api/user/${id}`, 
+    {headers: {
+      access_token: localStorage.getItem("access_token"),
+    }});
     return data.data;
   } catch (err) {
     console.log(err);
-    return [];
+    
   }
 }
 
@@ -16,20 +19,25 @@ export async function updateUser(id, name, address, email) {
       name,
       address,
       email,
-    });
+    } ,{headers: {
+      access_token: localStorage.getItem("access_token"),
+    }});
     return data.data;
   } catch (err) {
     console.log(err);
-    return [];
+    
   }
 }
 
 export async function deleteUser(id) {
   try {
-    await axios.delete(`http://localhost:8081/api/user/${id}`);
+    await axios.delete(`http://localhost:8081/api/user/${id}`,
+     {headers: {
+      access_token: localStorage.getItem("access_token"),
+    }});
     return;
   } catch (err) {
     console.log(err);
-    return [];
+    
   }
 }
