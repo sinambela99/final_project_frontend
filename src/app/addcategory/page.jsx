@@ -45,6 +45,7 @@ import axios from 'axios';
             required
           />
         </div>
+        
         <div className="mb-4">
           <label htmlFor="description" className="block text-gray-700 font-bold mb-2">Description:</label>
           <textarea
