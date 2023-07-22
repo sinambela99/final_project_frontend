@@ -14,7 +14,7 @@ export default function UpdateProduct() {
     photo: null,
   });
   const { id } = useParams();
-  const router = useRouter()
+  const router = useRouter();
 
   useEffect(() => {
     const fetch = async () => {
@@ -175,7 +175,7 @@ export default function UpdateProduct() {
           Update Product
         </button>
         <button
-        onClick={() => router.push(`/products/delete/${id}`)}
+          onClick={() => router.push(`/products/delete/${id}`)}
           className="bg-red-500 text-white px-4 py-2 rounded-md"
         >
           Delete Product
