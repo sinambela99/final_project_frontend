@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import axios from "axios";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 export default function DeleteProduct() {
   const [params, setProductId] = useState("");
   const { id } = useParams();
+  const route = useRouter();
 
   const handleChange = (e) => {
     setProductId(e.target.value);
@@ -15,10 +16,14 @@ export default function DeleteProduct() {
   const handleDelete = async () => {
     try {
       // Send a DELETE request to the backend server to delete the product by its ID
-      const serverResponse = await axios.delete(
-        `http://localhost:8081/api/product/${id}`
-      );
-
+      const serverResponse = await axios.delete(`http://localhost:8081/api/product/${id}`, {
+        headers: {
+          access_token: localStorage.getItem("access_token"),
+        },
+      });
+      if (serverResponse) {
+        route.push("/");
+      }
       console.log("Product deleted successfully:", serverResponse.data);
       // You can add additional logic to handle successful deletion, show a success message, or refresh the product list, etc.
     } catch (error) {
@@ -34,19 +39,9 @@ export default function DeleteProduct() {
         <label htmlFor="productId" className="block font-medium">
           Product ID:
         </label>
-        <input
-          type="text"
-          id="productId"
-          value={id}
-          onChange={handleChange}
-          className="border border-gray-300 p-2 rounded-md w-full"
-          required
-        />
+        <input type="text" id="productId" value={id} onChange={handleChange} className="border border-gray-300 p-2 rounded-md w-full" required />
       </div>
-      <button
-        onClick={handleDelete}
-        className="bg-red-500 text-white px-4 py-2 rounded-md"
-      >
+      <button onClick={handleDelete} className="bg-red-500 text-white px-4 py-2 rounded-md">
         Delete Product
       </button>
     </div>

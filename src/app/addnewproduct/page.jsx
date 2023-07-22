@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function AddProduct() {
   const [product, setProduct] = useState({
@@ -16,6 +17,7 @@ export default function AddProduct() {
 
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
     fetchCategories();
@@ -75,6 +77,10 @@ export default function AddProduct() {
           access_token: localStorage.getItem("access_token"),
         },
       });
+
+      if (serverResponse) {
+        router.push("/");
+      }
 
       console.log("Product added successfully:", serverResponse.data);
     } catch (error) {

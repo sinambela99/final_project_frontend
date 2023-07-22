@@ -29,7 +29,7 @@ export default function UpdateProduct() {
         photo: res.photo, // Assuming you don't want to display the photo in this form.
       });
     });
-  }, [id]);
+  }, []);
 
   console.log(data);
   console.log(product);
