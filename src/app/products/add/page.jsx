@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function AddProduct() {
   const [product, setProduct] = useState({
@@ -16,6 +17,7 @@ export default function AddProduct() {
 
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
     fetchCategories();
@@ -76,6 +78,10 @@ export default function AddProduct() {
         },
       });
 
+      if (serverResponse) {
+        router.push("/");
+      }
+
       console.log("Product added successfully:", serverResponse.data);
     } catch (error) {
       console.error("Error adding product:", error);
@@ -83,7 +89,7 @@ export default function AddProduct() {
   };
 
   return (
-    <div className="w-full max-w-[1000px] mx-auto p-4">
+    <div className="w-full max-w-[1000px] mx-auto py-20">
       <h1 className="text-2xl font-bold mb-4">Add New Product</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">

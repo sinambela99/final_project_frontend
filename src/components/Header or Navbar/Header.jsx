@@ -77,7 +77,13 @@ const Header = () => {
       <Typography as="li" variant="small" color="black" className="font-normal">
         <Link href={`/profile/${userId.id}`} className="flex items-center">
           {" "}
-          About{" "}
+          {isLogin ? "Profile" : ""}
+        </Link>
+      </Typography>
+      <Typography as="li" variant="small" color="black" className="font-normal">
+        <Link href={"/products/add"} className="flex items-center">
+          {" "}
+          Add New Product{" "}
         </Link>
       </Typography>
       <Typography as="li" variant="small" color="black" className="font-normal">

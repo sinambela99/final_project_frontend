@@ -89,8 +89,8 @@ export default function AddProduct() {
   };
 
   return (
-    <div className="w-full max-w-[1000px] mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Add New Product</h1>
+    <div className="w-full max-w-[1000px] mx-auto py-10">
+      <h1 className="text-2xl font-bold mb-4 py-10">Add New Product</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label htmlFor="productName" className="block font-medium">

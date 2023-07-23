@@ -16,10 +16,9 @@ import Head from "next/head";
 const ProductDetail = () => {
   const [datas, setDatas] = useState([]);
   const { id } = useParams();
-  const dispatch = useDispatch()
-  const router = useRouter()
-  const cart = useSelector((state) => state.cart)
-
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const cart = useSelector((state) => state.cart);
 
   //   const data = await getProductDetail(id);
   // console.log(id);
@@ -31,18 +30,17 @@ const ProductDetail = () => {
       }
       // console.log(datas);
       // console.log(res);
-    },
-      dispatch(getTotal()));
+    }, dispatch(getTotal()));
   }, [cart, dispatch]);
 
   const handleAddToCart = (product) => {
-    dispatch(addToCart(product))
-  }
+    dispatch(addToCart(product));
+  };
 
   const handleBuyNow = (product) => {
-    dispatch(addToCart(product))
-    router.push('/cart')
-  }
+    dispatch(addToCart(product));
+    router.push("/cart");
+  };
 
   return (
     <>
@@ -52,6 +50,14 @@ const ProductDetail = () => {
 
       <section className="heightFix px-6 lg:py-32 md:py-28 py-5 pb-10 bg-white">
         <div className="max-w-screen-xl py-10 flex items-center mx-auto">
+          <button onClick={() => router.push(`/products/update/${datas.Product.id}`)} className="bg-red-500 text-white px-4 py-2 rounded-md">
+            Update Product
+          </button>
+
+          <button onClick={() => router.push(`/products/delete/${datas.Product.id}`)} className="bg-red-500 text-white px-4 py-2 rounded-md">
+            Delete Product
+          </button>
+
           {datas && datas.Product && (
             <div className="flex md:flex-row flex-col md:justify-between w-full md:gap-4 gap-8">
               <Image unoptimized src={datas.Product.photo} alt="" width={400} height={400} className="object-contain" />
@@ -70,17 +76,11 @@ const ProductDetail = () => {
                 <p className="text-gray-500 text-justify text-sm lg:text-base my-6">{datas.Product.description}</p>
                 <p className="text-2xl font-semibold text-gray-700">{new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(datas.Product.price)}</p>
                 <div className="mt-10 flex flex-col sm:gap-4 gap-2">
-                  <Button
-                    className={`${styles.mediaButton}`}
-                    onClick={() => handleAddToCart(datas)}
-                  >
+                  <Button className={`${styles.mediaButton}`} onClick={() => handleAddToCart(datas)}>
                     <HiShoppingCart className="w-4" />
                     <span className="ml-2">Add to Cart</span>
                   </Button>
-                  <Button
-                    className={`${styles.mediaButtonGreen}`}
-                    onClick={() => handleBuyNow(datas)}
-                  >
+                  <Button className={`${styles.mediaButtonGreen}`} onClick={() => handleBuyNow(datas)}>
                     <HiLightningBolt className="w-4" />
                     <span className="ml-2">Buy Now</span>
                   </Button>
